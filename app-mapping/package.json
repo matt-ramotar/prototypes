@@ -1,0 +1,29 @@
+{
+  "name": "app-map-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test",
+    "check": "npm test && npm run build"
+  },
+  "dependencies": {
+    "@heroui-pro/react": "1.0.0-beta.7",
+    "@heroui/react": "3.2.3",
+    "@iconify/react": "^6.0.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@vitejs/plugin-react": "6.0.5",
+    "tailwindcss": "4.3.3",
+    "vite": "8.2.0"
+  },
+  "overrides": {
+    "tar": "7.5.22"
+  }
+}
