@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import {RouterProvider} from "react-aria-components";
 import {useUrlState} from "./use-url-state.js";
 import {resolveAnswer, canonicalize} from "./query.js";
@@ -20,6 +20,8 @@ import {AskOverlay} from "./ask-overlay.jsx";
 import {AskPage} from "./ask-page.jsx";
 import {ReportsCatalog} from "./reports-catalog.jsx";
 import {ReportPage} from "./report-page.jsx";
+import {ReviewSurface} from "./review-surface.jsx";
+import {initialReview, reviewReduce} from "./review-view.js";
 import {MapHome} from "./map-home.jsx";
 import {ShortcutsModal, useShortcuts} from "./shortcuts.jsx";
 import {copyWithToast} from "./toast.jsx";
@@ -38,6 +40,9 @@ export default function App() {
   const onOpenScreen = (key) => navigate({patch: {...query, screen: key}});
   const [askOpen, setAskOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  // Review judgments live in memory only — this prototype checks the accept
+  // loop's feel, not its persistence. A reload clears every verdict.
+  const [review, dispatchReview] = useReducer(reviewReduce, initialReview);
 
   useShortcuts({
     navigate, query,
@@ -118,6 +123,12 @@ export default function App() {
     const r = REPORTS.find((x) => x.id === route.params.id);
     crumbs = [{label: "Reports", page: "reports"}, {label: r ? `#${r.id}` : route.params.id}];
     body = <ReportPage id={route.params.id} navigate={navigate} />;
+  } else if (route.page === "review") {
+    crumbs = [{label: "Review"}];
+    body = <ReviewSurface review={review} dispatch={dispatchReview} />;
+  } else if (route.page === "proposal") {
+    crumbs = [{label: "Review", page: "review"}, {label: route.params.id}];
+    body = <ReviewSurface review={review} dispatch={dispatchReview} focusParam={route.params.id} />;
   } else if (route.page === "builds") { crumbs = [{label: "Builds"}]; body = <BuildsCatalog navigate={navigate} />; }
   else if (route.page === "build") {
     crumbs = [{label: "Builds", page: "builds"}, {label: `b${route.params.id}`}];

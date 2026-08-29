@@ -20,7 +20,8 @@
   --surface-tertiary: color-mix(in oklab, #FBF4F0 35%, #E0C9BE);
   --overlay: #FFFFFF;
   --overlay-foreground: var(--foreground);
-  --muted: color-mix(in oklab, #2A1F1A 58%, #FBF4F0);
+  /* 66% ink keeps 12px muted text above the 4.5:1 AA floor (58% sat at ~4:1). */
+  --muted: color-mix(in oklab, #2A1F1A 66%, #FBF4F0);
   --default: color-mix(in oklab, #FBF4F0 72%, #E6D2C8);
   --default-foreground: var(--foreground);
 

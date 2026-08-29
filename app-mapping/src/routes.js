@@ -2,12 +2,12 @@
 // paths, so history routing needs no dependency.
 
 const LIST = {screens: "screens", journeys: "journeys", lanes: "lanes", builds: "builds",
-  reports: "reports"};
+  reports: "reports", review: "review"};
 const ENTITY = {screens: "screen", journeys: "journey", lanes: "lane", builds: "build",
-  reports: "report"};
+  reports: "report", review: "proposal"};
 
 export const PAGES = ["atlas", "map", "threads", "screens", "screen", "journeys", "journey",
-  "lanes", "lane", "builds", "build", "reports", "report", "ask"];
+  "lanes", "lane", "builds", "build", "reports", "report", "review", "proposal", "ask"];
 
 export function matchRoute(pathname) {
   const parts = pathname.split("/").filter(Boolean);
@@ -32,7 +32,7 @@ export function pathFor(page, param) {
   if (page === "map" || page === "ask" || page === "threads") return `/${page}`;
   if (page in LIST) return `/${page}`;
   const heads = {screen: "screens", journey: "journeys", lane: "lanes", build: "builds",
-    report: "reports"};
+    report: "reports", proposal: "review"};
   if (page in heads) return `/${heads[page]}/${encodeURIComponent(param)}`;
   return "/";
 }

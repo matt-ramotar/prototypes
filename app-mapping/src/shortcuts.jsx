@@ -4,7 +4,7 @@ import {BUILDS} from "./fixtures.js";
 import {GIcon} from "./ui.jsx";
 
 const GOTO = {a: "/", t: "/", s: "/screens", j: "/journeys", l: "/lanes",
-  b: "/builds", r: "/reports"};
+  b: "/builds", r: "/reports", v: "/review"};
 
 export const SHORTCUTS = [
   {keys: "⌘K", label: "Ask the Map"},
@@ -15,9 +15,15 @@ export const SHORTCUTS = [
   {keys: "g then l", label: "Go to Lanes"},
   {keys: "g then b", label: "Go to Builds"},
   {keys: "g then r", label: "Go to Reports"},
+  {keys: "g then v", label: "Go to Review"},
   {keys: "[  /  ]", label: "Step the build back / forward"},
   {keys: "c", label: "Copy permalink"},
   {keys: "?", label: "This list"},
+  {keys: "↑ / ↓", label: "Review: next / previous proposal"},
+  {keys: "a / r / x", label: "Review: approve / send back / reject"},
+  {keys: "↵", label: "Review: ask about the proposal"},
+  {keys: "e", label: "Review: apply the suggested fix"},
+  {keys: "z", label: "Review: undo the last decision"},
 ];
 
 const isTyping = (el) =>

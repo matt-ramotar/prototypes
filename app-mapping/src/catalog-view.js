@@ -1,4 +1,5 @@
 import {BUILDS, JOURNEYS, LANES, OBSERVATIONS, REPORTS, SCREENS} from "./fixtures.js";
+import {PROPOSALS} from "./proposal-fixtures.js";
 
 const ageDaysOf = (iso, now) => Math.floor((now - new Date(iso)) / 86400000);
 
@@ -16,6 +17,7 @@ export function catalogCounts() {
     lanes: LANES.length,
     builds: BUILDS.length,
     reports: REPORTS.length,
+    review: PROPOSALS.length,
   };
 }
 

@@ -20,6 +20,7 @@ const NAV = [
   ]},
   {label: "Validation", items: [
     {page: "reports", label: "Reports", icon: "list-check", countKey: "reports"},
+    {page: "review", label: "Review", icon: "circle-check", countKey: "review"},
   ]},
 ];
 
@@ -193,6 +194,7 @@ export function AppShell({route, onAsk, crumbs = [], onShortcuts, fill, children
       lane: "lanes",
       build: "builds",
       report: "reports",
+      proposal: "review",
       threads: "atlas",
     }[route.page] ?? route.page;
 
